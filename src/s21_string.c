@@ -3,6 +3,8 @@
 /**
     1. Searches for the first occurrence of the character c (an unsigned char)
     in the first n bytes of the string pointed to, by the argument str.
+    
+    Implemented by: Almeta Terry
 **/
 void *s21_memchr(const void *str, int c, s21_size_t n) {
   // приравниваем изначально к нашему s21_NULL
