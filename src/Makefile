@@ -14,5 +14,7 @@ test:
 
 gcov_report:
 
+rebuild: clean all
+
 clean:
 	rm -rf *.o *.a *.so
