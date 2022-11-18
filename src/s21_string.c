@@ -6,14 +6,14 @@
 **/
 void *s21_memchr(const void *str, int c, s21_size_t n) {
   // приравниваем изначально к нашему s21_NULL
-  char *res = s21_NULL;
+  unsigned char *res = s21_NULL;
 
   //создаем переменную ptr типа char которая хранит адрес начала строки
-  char *ptr = str;
+  const unsigned char *ptr = str;
 
-  for (int i = 0; i < n; i++) {
-    if(*ptr == c) {
-      res = ptr;
+  for (int i = 0; i < (int) n; i++) {
+    if(*ptr == (unsigned char) c) {
+      res = *ptr;
     } else {
       ptr++;
     }

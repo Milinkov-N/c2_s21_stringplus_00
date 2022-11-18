@@ -3,6 +3,7 @@
 
 #define s21_NULL (void *)0
 
+// если хотим задать тип переменой как 'unsigned long' то просто даем ей тип 's21_size_t'
 typedef unsigned long s21_size_t;
 
 /* <====== TODO FUNCTIONS ======> */
