@@ -5,10 +5,20 @@
     in the first n bytes of the string pointed to, by the argument str.
 **/
 void *s21_memchr(const void *str, int c, s21_size_t n) {
-  (void)str;
-  (void)c;
-  (void)n;
-  return s21_NULL;
+  // приравниваем изначально к нашему s21_NULL
+  char *res = s21_NULL;
+
+  //создаем переменную ptr типа char которая хранит адрес начала строки
+  char *ptr = str;
+
+  for (int i = 0; i < n; i++) {
+    if(*ptr == c) {
+      res = ptr;
+    } else {
+      ptr++;
+    }
+  }
+  return res;
 }
 
 /**
