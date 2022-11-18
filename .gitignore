@@ -35,6 +35,7 @@
 *.i*86
 *.x86_64
 *.hex
+run
 gcov
 unit-test
 
@@ -43,6 +44,8 @@ unit-test
 *.su
 *.idb
 *.pdb
+*.gcda
+*.gcno
 report
 report.info
 

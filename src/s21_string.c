@@ -25,6 +25,8 @@ void *s21_memchr(const void *str, int c, s21_size_t n) {
 
 /**
     2. Compares the first n bytes of str1 and str2.
+
+    Implemented by: Tania Kiara
 **/
 int s21_memcmp(const void *str1, const void *str2, s21_size_t n) {
   int result = 0;
