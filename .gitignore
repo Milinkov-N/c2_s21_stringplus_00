@@ -38,6 +38,7 @@
 run
 gcov
 unit-test
+main
 
 # Debug files
 *.dSYM/
@@ -57,3 +58,4 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+main.c
