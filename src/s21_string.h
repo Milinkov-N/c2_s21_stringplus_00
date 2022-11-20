@@ -22,7 +22,7 @@ int s21_memcmp(const void *str1, const void *str2, s21_size_t n);
 /**
     3. Copies n characters from src to dest.
 **/
-void *s21_memcpy(void *dest, const void *src, s21_size_t);
+void *s21_memcpy(void *dest, const void *src, s21_size_t n);
 
 /**
     4. Another function to copy n characters from src to dest.

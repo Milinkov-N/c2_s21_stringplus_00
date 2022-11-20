@@ -15,7 +15,7 @@ void *s21_memchr(const void *str, int c, s21_size_t n) {
 
   for (int i = 0; i < (int) n; i++) {
     if(*ptr == (unsigned char) c) {
-      res = *ptr;
+      res = (void *)ptr;
     } else {
       ptr++;
     }
@@ -36,4 +36,21 @@ int s21_memcmp(const void *str1, const void *str2, s21_size_t n) {
     if (ch1 != ch2) result = ch1 - ch2;
   }
   return result;
+}
+
+
+/**
+    3. Copies n characters from src to dest.
+
+    Implemented by: Almeta Terry
+**/
+void *s21_memcpy(void *dest, const void *src, s21_size_t n) {
+  char *ptr_dest = (char *)dest;
+  char *ptr_src = (char *)src;
+  for (s21_size_t i = 0; i < n; i++) {
+    *ptr_dest = *ptr_src;
+    ptr_dest++;
+    ptr_src++;
+  }
+  return dest;
 }

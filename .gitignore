@@ -39,6 +39,7 @@ run
 gcov
 unit-test
 main
+test_telega.c
 
 # Debug files
 *.dSYM/
