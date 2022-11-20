@@ -129,12 +129,100 @@ Suite *ts_s21_memcpy() {
   return suite;
 }
 
+// ТЕСТЫ ДЛЯ memmove
+
+START_TEST(tc01_memmove) {
+  s21_size_t n = 12;
+  char str_1[256] = "Hello  \0 there.";
+  char str_2[256] = "I'm feeling good almetate";
+  ck_assert_str_eq(memmove(str_1, str_2, n), s21_memmove(str_1, str_2, n));
+}
+END_TEST
+
+START_TEST(tc02_memmove) {
+  s21_size_t n = 1;
+  char str_1[256] = "Hello  \0 there.";
+  char str_2[256] = "I'm feeling good almetate";
+  ck_assert_str_eq(memmove(str_1, str_2, n), s21_memmove(str_1, str_2, n));
+}
+END_TEST
+
+START_TEST(tc03_memmove) {
+  s21_size_t n = 260;
+  char str_1[256] = "Hello  \0 there.";
+  char str_2[256] = "I'm feeling good almetate";
+  ck_assert_str_eq(memmove(str_1, str_2, n), s21_memmove(str_1, str_2, n));
+}
+END_TEST
+START_TEST(tc04_memmove) {
+  s21_size_t n = 20;
+  char str_1[100] = "0 dfjhk jdk gkdgf hjg f";
+  char str_2[100] = "0 dfj bkdfb sb fjshf jhfs ";
+  ck_assert_str_eq(memmove(str_1, str_2, n), s21_memmove(str_1, str_2, n));
+}
+END_TEST
+
+Suite *ts_s21_memmove() {
+  Suite *suite = suite_create("ts_s21_memmove");
+  TCase *test_case = tcase_create("tc_s21_memmove");
+
+  tcase_add_test(test_case, tc01_memmove);
+  tcase_add_test(test_case, tc02_memmove);
+  tcase_add_test(test_case, tc03_memmove);
+  tcase_add_test(test_case, tc04_memmove);
+  suite_add_tcase(suite, test_case);
+
+  return suite;
+}
+
+// ТЕСТЫ ДЛЯ memset
+
+START_TEST(tc01_memset) {
+  s21_size_t n = 12;
+  char ch = '\0';
+  char str[100] = "sdsdf";
+  ck_assert_str_eq(memset(str, ch, n), s21_memset(str, ch, n));
+}
+END_TEST
+
+START_TEST(tc02_memset) {
+  s21_size_t n = 12;
+  char ch = 'r';
+  char str[100] = "sdsdf";
+  ck_assert_str_eq(memset(str, ch, n), s21_memset(str, ch, n));
+}
+END_TEST
+
+START_TEST(tc03_memset) {
+  s21_size_t n = 12;
+  char ch = '\0';
+  char str_1[100] = "sdsdf";
+  char str_2[100] = "sdsdf";
+  ck_assert_str_eq(memset(str_1, ch, n), s21_memset(str_2, ch, n));
+  ck_assert_pstr_eq(memset(str_1, ch, n), s21_memset(str_2, ch, n));
+}
+END_TEST
+
+Suite *ts_s21_memset() {
+  Suite *suite = suite_create("ts_s21_memset");
+  TCase *test_case = tcase_create("tc_s21_memset");
+
+  tcase_add_test(test_case, tc01_memset);
+  tcase_add_test(test_case, tc02_memset);
+  tcase_add_test(test_case, tc03_memset);
+  suite_add_tcase(suite, test_case);
+
+  return suite;
+}
+
 int main(void) {
   int failed = 0;
   Suite *test_suites[] = {
       ts_s21_memcmp(),
       ts_s21_memchr(),
       ts_s21_memcpy(),
+      ts_s21_memmove(),
+      ts_s21_memset(),
       NULL,
   };
 

@@ -54,3 +54,38 @@ void *s21_memcpy(void *dest, const void *src, s21_size_t n) {
   }
   return dest;
 }
+
+/**
+    4. Another function to copy n characters from src to dest.
+
+    Implemented by: Almeta Terry
+**/
+void *s21_memmove(void *dest, const void *src, s21_size_t n) {
+  // в отличии от memcpy копирование происходит через промежуточный буффер
+  char *ptr_dest = (char *)dest;
+  char *ptr_src = (char *)src;
+  char tmp[n];
+
+  for (s21_size_t i = 0; i < n; i++) {
+    *(tmp + i) = *(ptr_src + i);
+  }
+
+  for (s21_size_t i = 0; i < n; i++) {
+    *(ptr_dest + 1) = *(tmp + 1);
+  }
+  return dest;
+}
+
+/**
+    5. Copies the character c (an unsigned char) to the first n characters of
+    the string pointed to, by the argument str.
+
+    Implemented by: Almeta Terry
+**/
+void *s21_memset(void *str, int c, s21_size_t n) {
+  char *ptr = str;
+  for(s21_size_t i = 0; i < n; i++) {
+    *(ptr + i) = c;
+  }
+  return ptr;
+}

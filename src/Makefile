@@ -3,7 +3,7 @@ CFLAGS=-c -std=c11 -Wall -Werror -Wextra
 PROFILE_FLAGS = -fprofile-arcs -ftest-coverage
 CHECKFLAGS=-lcheck -lm -lpthread -lrt
 
-# get from: https://www.ccs.neu.edu/home/skotthe/classes/cs5600/fall/2015/labs/intro-check.html
+# get example from: https://www.ccs.neu.edu/home/skotthe/classes/cs5600/fall/2015/labs/intro-check.html
 
 all: gcov_report.html
 
