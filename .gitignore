@@ -38,6 +38,8 @@
 run
 gcov
 unit-test
+main
+test_telega.c
 
 # Debug files
 *.dSYM/
@@ -57,3 +59,4 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+main.c
