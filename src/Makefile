@@ -1,8 +1,14 @@
 CC=gcc
 CFLAGS=-std=c11 -Wall -Werror -Wextra
-CHECKFLAGS=-lcheck -lm -lpthread
 LDFLAGS=
 SOURCES=s21_string.c tests.c
+OS:=$(shell uname)
+
+ifeq ($(OS), Linux)
+	CHECKFLAGS=-lcheck -lm -lpthread -lrt -lsubunit
+else
+	CHECKFLAGS=-lcheck -lm -lpthread
+endif
 
 all: s21_string.a gcov_report
 
