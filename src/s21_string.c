@@ -3,12 +3,24 @@
 /**
     1. Searches for the first occurrence of the character c (an unsigned char)
     in the first n bytes of the string pointed to, by the argument str.
+    
+    Implemented by: Almeta Terry
 **/
 void *s21_memchr(const void *str, int c, s21_size_t n) {
-  (void)str;
-  (void)c;
-  (void)n;
-  return s21_NULL;
+  // приравниваем изначально к нашему s21_NULL
+  unsigned char *res = s21_NULL;
+
+  //создаем переменную ptr типа char которая хранит адрес начала строки
+  const unsigned char *ptr = str;
+
+  for (int i = 0; i < (int) n; i++) {
+    if(*ptr == (unsigned char) c) {
+      res = (void *)ptr;
+    } else {
+      ptr++;
+    }
+  }
+  return res;
 }
 
 /**
@@ -24,4 +36,56 @@ int s21_memcmp(const void *str1, const void *str2, s21_size_t n) {
     if (ch1 != ch2) result = ch1 - ch2;
   }
   return result;
+}
+
+
+/**
+    3. Copies n characters from src to dest.
+
+    Implemented by: Almeta Terry
+**/
+void *s21_memcpy(void *dest, const void *src, s21_size_t n) {
+  char *ptr_dest = (char *)dest;
+  char *ptr_src = (char *)src;
+  for (s21_size_t i = 0; i < n; i++) {
+    *ptr_dest = *ptr_src;
+    ptr_dest++;
+    ptr_src++;
+  }
+  return dest;
+}
+
+/**
+    4. Another function to copy n characters from src to dest.
+
+    Implemented by: Almeta Terry
+**/
+void *s21_memmove(void *dest, const void *src, s21_size_t n) {
+  // в отличии от memcpy копирование происходит через промежуточный буффер
+  char *ptr_dest = (char *)dest;
+  char *ptr_src = (char *)src;
+  char tmp[n];
+
+  for (s21_size_t i = 0; i < n; i++) {
+    *(tmp + i) = *(ptr_src + i);
+  }
+
+  for (s21_size_t i = 0; i < n; i++) {
+    *(ptr_dest + 1) = *(tmp + 1);
+  }
+  return dest;
+}
+
+/**
+    5. Copies the character c (an unsigned char) to the first n characters of
+    the string pointed to, by the argument str.
+
+    Implemented by: Almeta Terry
+**/
+void *s21_memset(void *str, int c, s21_size_t n) {
+  char *ptr = str;
+  for(s21_size_t i = 0; i < n; i++) {
+    *(ptr + i) = c;
+  }
+  return ptr;
 }
