@@ -61,7 +61,7 @@ int s21_strcmp(const char *str1, const char *str2);
 /**
     10. Compares at most the first n bytes of str1 and str2.
 **/
-int s21_strncmp(const char *str1, const char *str2, s21_size_t);
+int s21_strncmp(const char *str1, const char *str2, s21_size_t n);
 
 /**
     11. Copies the string pointed to, by src to dest.

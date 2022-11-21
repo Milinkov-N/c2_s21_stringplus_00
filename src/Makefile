@@ -1,7 +1,15 @@
 CC=gcc
 CFLAGS=-c -std=c11 -Wall -Werror -Wextra
+LDFLAGS=
 PROFILE_FLAGS = -fprofile-arcs -ftest-coverage
-CHECKFLAGS=-lcheck -lm -lpthread -lrt
+SOURCES=s21_string.c tests.c
+OS:=$(shell uname)
+
+ifeq ($(OS), Linux)
+	CHECKFLAGS=-lcheck -lm -lpthread -lrt -lsubunit
+else
+	CHECKFLAGS=-lcheck -lm -lpthread
+endif
 
 # get example from: https://www.ccs.neu.edu/home/skotthe/classes/cs5600/fall/2015/labs/intro-check.html
 
