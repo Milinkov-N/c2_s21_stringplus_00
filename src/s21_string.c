@@ -38,42 +38,39 @@ int s21_memcmp(const void *str1, const void *str2, s21_size_t n) {
   return result;
 }
 
-
 /**
     3. Copies n characters from src to dest.
 
-    Implemented by: Almeta Terry
+    Implemented by: Tania Kiara
 **/
 void *s21_memcpy(void *dest, const void *src, s21_size_t n) {
-  char *ptr_dest = (char *)dest;
-  char *ptr_src = (char *)src;
-  for (s21_size_t i = 0; i < n; i++) {
-    *ptr_dest = *ptr_src;
-    ptr_dest++;
-    ptr_src++;
-  }
-  return dest;
+  unsigned char *to = dest;
+  for (s21_size_t i = 0; i < n; i++) to[i] = ((unsigned char *)src)[i];
+  return to;
 }
 
 /**
     4. Another function to copy n characters from src to dest.
 
-    Implemented by: Almeta Terry
+    Implemented by: Tania Kiara
 **/
 void *s21_memmove(void *dest, const void *src, s21_size_t n) {
-  // в отличии от memcpy копирование происходит через промежуточный буффер
-  char *ptr_dest = (char *)dest;
-  char *ptr_src = (char *)src;
-  char tmp[n];
+  unsigned char *to = dest;
+  void *result = to;
 
-  for (s21_size_t i = 0; i < n; i++) {
-    *(tmp + i) = *(ptr_src + i);
+  if (src != dest && n != 0) {
+    if (dest > src && dest - src < (int)n) {
+      for (int i = n - 1; i >= 0; i--) to[i] = ((unsigned char *)src)[i];
+      result = dest;
+    } else if (src > dest && src - dest < (int)n) {
+      for (s21_size_t i = 0; i < n; i++) to[i] = ((unsigned char *)src)[i];
+      result = dest;
+    } else {
+      s21_memcpy(dest, src, n);
+    }
   }
 
-  for (s21_size_t i = 0; i < n; i++) {
-    *(ptr_dest + 1) = *(tmp + 1);
-  }
-  return dest;
+  return result;
 }
 
 /**

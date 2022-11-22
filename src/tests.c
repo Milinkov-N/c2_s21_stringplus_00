@@ -14,15 +14,7 @@ START_TEST(tc01_memcmp) {
 }
 END_TEST
 
-START_TEST(tc02_memcmp) {
-  s21_size_t n = 5;
-  void *str1 = "Your move.";
-  void *str2 = "You fool. I've been trained in your Jedi arts by Count Dooku.";
-  ck_assert_int_eq(memcmp(str1, str2, n), s21_memcmp(str1, str2, n));
-}
-END_TEST
-
-START_TEST(tc03_memcmp) {
+START_TEST(tc05_memcmp) {
   s21_size_t n = 8;
   void *str1 = "Don't underestimate my power!";
   void *str2 = "Don't try it.";
@@ -35,9 +27,32 @@ Suite *ts_s21_memcmp() {
   Suite *suite = suite_create("ts_s21_memcmp");
   TCase *test_case = tcase_create("tc_s21_memcmp");
 
-  tcase_add_test(test_case, tc01_memcmp);
-  tcase_add_test(test_case, tc02_memcmp);
-  tcase_add_test(test_case, tc03_memcmp);
+  tcase_add_test(test_case, tc04_memcmp);
+  tcase_add_test(test_case, tc05_memcmp);
+  suite_add_tcase(suite, test_case);
+
+  return suite;
+}
+
+Suite *ts_s21_memcpy() {
+  Suite *suite = suite_create("ts_s21_memcpy");
+  TCase *test_case = tcase_create("tc_s21_memcpy");
+
+  tcase_add_test(test_case, tc06_memcpy);
+  tcase_add_test(test_case, tc07_memcpy);
+  tcase_add_test(test_case, tc08_memcpy);
+  suite_add_tcase(suite, test_case);
+
+  return suite;
+}
+
+Suite *ts_s21_memmove() {
+  Suite *suite = suite_create("ts_s21_memmove");
+  TCase *test_case = tcase_create("tc_s21_memmove");
+
+  tcase_add_test(test_case, tc09_memmove);
+  tcase_add_test(test_case, tc10_memmove);
+  tcase_add_test(test_case, tc11_memmove);
   suite_add_tcase(suite, test_case);
 
   return suite;

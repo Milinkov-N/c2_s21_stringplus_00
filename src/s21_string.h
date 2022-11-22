@@ -9,27 +9,6 @@ typedef unsigned long s21_size_t;
 /* <====== TODO FUNCTIONS ======> */
 
 /**
-    1. Searches for the first occurrence of the character c (an unsigned char)
-    in the first n bytes of the string pointed to, by the argument str.
-**/
-void *s21_memchr(const void *str, int c, s21_size_t n);
-
-/**
-    2. Compares the first n bytes of str1 and str2.
-**/
-int s21_memcmp(const void *str1, const void *str2, s21_size_t n);
-
-/**
-    3. Copies n characters from src to dest.
-**/
-void *s21_memcpy(void *dest, const void *src, s21_size_t n);
-
-/**
-    4. Another function to copy n characters from src to dest.
-**/
-void *s21_memmove(void *dest, const void *src, s21_size_t n);
-
-/**
     5. Copies the character c (an unsigned char) to the first n characters of
     the string pointed to, by the argument str.
 **/
@@ -125,6 +104,25 @@ char *s21_strtok(char *str, const char *delim);
 
 /* <====== IMPLEMENTED FUNCTIONS ======> */
 
-/* <none> */
+/**
+    1. Searches for the first occurrence of the character c (an unsigned char)
+    in the first n bytes of the string pointed to, by the argument str.
+**/
+void *s21_memchr(const void *str, int c, s21_size_t n);
+
+/**
+    2. Compares the first n bytes of str1 and str2.
+**/
+int s21_memcmp(const void *str1, const void *str2, s21_size_t n);
+
+/**
+    3. Copies n characters from src to dest.
+**/
+void *s21_memcpy(void *dest, const void *src, s21_size_t n);
+
+/**
+    4. Another function to copy n characters from src to dest.
+**/
+void *s21_memmove(void *dest, const void *src, s21_size_t n);
 
 #endif  // SRC_S21_STRING_H_
