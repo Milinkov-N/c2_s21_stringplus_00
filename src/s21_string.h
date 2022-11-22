@@ -3,16 +3,11 @@
 
 #define s21_NULL (void *)0
 
-// если хотим задать тип переменой как 'unsigned long' то просто даем ей тип 's21_size_t'
+// если хотим задать тип переменой как 'unsigned long' то просто даем ей тип
+// 's21_size_t'
 typedef unsigned long s21_size_t;
 
 /* <====== TODO FUNCTIONS ======> */
-
-/**
-    5. Copies the character c (an unsigned char) to the first n characters of
-    the string pointed to, by the argument str.
-**/
-void *s21_memset(void *str, int c, s21_size_t n);
 
 /**
     6. Appends the string pointed to, by src to the end of the string pointed to
@@ -124,5 +119,11 @@ void *s21_memcpy(void *dest, const void *src, s21_size_t n);
     4. Another function to copy n characters from src to dest.
 **/
 void *s21_memmove(void *dest, const void *src, s21_size_t n);
+
+/**
+    5. Copies the character c (an unsigned char) to the first n characters of
+    the string pointed to, by the argument str.
+**/
+void *s21_memset(void *str, int c, s21_size_t n);
 
 #endif  // SRC_S21_STRING_H_
