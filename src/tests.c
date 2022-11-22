@@ -4,9 +4,9 @@
 
 #include "s21_string.h"
 
-// ТЕСТЫ ДЛЯ memchr
+// <=== TEST CASES: s21_memchr ===>
 
-START_TEST(tc01_memchr) {
+START_TEST(tc001_memchr) {
   s21_size_t n = 12;
   void *str = "Hello there.";
   char ch = 'l';
@@ -14,7 +14,7 @@ START_TEST(tc01_memchr) {
 }
 END_TEST
 
-START_TEST(tc02_memchr) {
+START_TEST(tc002_memchr) {
   s21_size_t n = 2;
   void *str = "Hello there.";
   char ch = 't';
@@ -22,7 +22,7 @@ START_TEST(tc02_memchr) {
 }
 END_TEST
 
-START_TEST(tc03_memchr) {
+START_TEST(tc003_memchr) {
   s21_size_t n = 20;
   void *str = "Hello there.";
   char ch = 'u';
@@ -30,9 +30,9 @@ START_TEST(tc03_memchr) {
 }
 END_TEST
 
-// ТЕСТЫ ДЛЯ memcmp
+// <=== TEST CASES: s21_memcmp ===>
 
-START_TEST(tc01_memcmp) {
+START_TEST(tc004_memcmp) {
   s21_size_t n = 12;
   void *str1 = "Hello there.";
   void *str2 = "Hello there.";
@@ -40,7 +40,7 @@ START_TEST(tc01_memcmp) {
 }
 END_TEST
 
-START_TEST(tc05_memcmp) {
+START_TEST(tc005_memcmp) {
   s21_size_t n = 8;
   void *str1 = "Don't underestimate my power!";
   void *str2 = "Don't try it.";
@@ -48,76 +48,67 @@ START_TEST(tc05_memcmp) {
 }
 END_TEST
 
-// ТЕСТЫ ДЛЯ memcpy
+// <=== TEST CASES: s21_memcpy ===>
 
-START_TEST(tc01_memcpy) {
-  s21_size_t n = 12;
-  char str_1[256] = "Hello  \0 there.";
-  char str_2[256] = "I'm feeling good almetate";
-  ck_assert_str_eq(memcpy(str_1, str_2, n), s21_memcpy(str_1, str_2, n));
+START_TEST(tc006_memcpy) {
+  s21_size_t n = 15;
+  char buf[16] = {0};
+  char s21_buf[16] = {0};
+  char src[16] = "General Kenobi.";
+  ck_assert_pstr_eq(memcpy(buf, src, n), s21_memcpy(s21_buf, src, n));
 }
 END_TEST
 
-START_TEST(tc02_memcpy) {
-  s21_size_t n = 100;
-  char str_1[256] = "Hello  there.";
-  char str_2[256] = "I'm feeling \0good almetate";
-  ck_assert_str_eq(memcpy(str_1, str_2, n), s21_memcpy(str_1, str_2, n));
+START_TEST(tc007_memcpy) {
+  s21_size_t n = 5;
+  char buf[16] = "Hello there.";
+  char s21_buf[16] = "Hello there.";
+  char src[16] = "There";
+  ck_assert_pstr_eq(memcpy(buf, src, n), s21_memcpy(s21_buf, src, n));
 }
 END_TEST
 
-START_TEST(tc03_memcpy) {
-  s21_size_t n = 1;
-  char str_1[256] = "Hello \0 \n \t there.";
-  char str_2[256] = "I'm feeling good almetate";
-  ck_assert_str_eq(memcpy(str_1, str_2, n), s21_memcpy(str_1, str_2, n));
+START_TEST(tc008_memcpy) {
+  s21_size_t n = 7;
+  char buf[32] = "Hello   Kenobi. General";
+  char s21_buf[32] = "Hello   Kenobi. General";
+  ck_assert_pstr_eq(memcpy(buf, buf + 16, n),
+                    s21_memcpy(s21_buf, s21_buf + 16, n));
 }
 END_TEST
 
-START_TEST(tc04_memcpy) {
-  s21_size_t n = 260;
-  char str_1[256] = "Hello \0 \n \t there.";
-  char str_2[256] = "I'm feeling good almetate";
-  ck_assert_str_eq(memcpy(str_1, str_2, n), s21_memcpy(str_1, str_2, n));
+// <=== TEST CASES: s21_memmove ===>
+
+START_TEST(tc009_memmove) {
+  s21_size_t n = 4;
+  char buf[64] = "It's over Anakin, I have the high ground.";
+  char s21_buf[64] = "It's over Anakin, I have the high ground.";
+  ck_assert_pstr_eq(memmove(buf, buf + 5, n),
+                    s21_memmove(s21_buf, s21_buf + 5, n));
 }
 END_TEST
 
-// ТЕСТЫ ДЛЯ memmove
-
-START_TEST(tc01_memmove) {
-  s21_size_t n = 12;
-  char str_1[256] = "Hello  \0 there.";
-  char str_2[256] = "I'm feeling good almetate";
-  ck_assert_str_eq(memmove(str_1, str_2, n), s21_memmove(str_1, str_2, n));
+START_TEST(tc010_memmove) {
+  s21_size_t n = 32;
+  char buf[64] = "It's over Anakin, I have the high ground.";
+  char s21_buf[64] = "It's over Anakin, I have the high ground.";
+  ck_assert_pstr_eq(memmove(buf, buf + 5, n),
+                    s21_memmove(s21_buf, s21_buf + 5, n));
 }
 END_TEST
 
-START_TEST(tc02_memmove) {
-  s21_size_t n = 1;
-  char str_1[256] = "Hello  \0 there.";
-  char str_2[256] = "I'm feeling good almetate";
-  ck_assert_str_eq(memmove(str_1, str_2, n), s21_memmove(str_1, str_2, n));
+START_TEST(tc011_memmove) {
+  s21_size_t n = 10;
+  char buf[64] = "It's over Anakin, I have the high ground.";
+  char s21_buf[64] = "It's over Anakin, I have the high ground.";
+  ck_assert_pstr_eq(memmove(buf + 5, buf, n),
+                    s21_memmove(s21_buf + 5, s21_buf, n));
 }
 END_TEST
 
-START_TEST(tc03_memmove) {
-  s21_size_t n = 260;
-  char str_1[256] = "Hello  \0 there.";
-  char str_2[256] = "I'm feeling good almetate";
-  ck_assert_str_eq(memmove(str_1, str_2, n), s21_memmove(str_1, str_2, n));
-}
-END_TEST
-START_TEST(tc04_memmove) {
-  s21_size_t n = 20;
-  char str_1[100] = "0 dfjhk jdk gkdgf hjg f";
-  char str_2[100] = "0 dfj bkdfb sb fjshf jhfs ";
-  ck_assert_str_eq(memmove(str_1, str_2, n), s21_memmove(str_1, str_2, n));
-}
-END_TEST
+// <=== TEST CASES: s21_memset ===>
 
-// ТЕСТЫ ДЛЯ memset
-
-START_TEST(tc01_memset) {
+START_TEST(tc012_memset) {
   s21_size_t n = 12;
   char ch = '\0';
   char str[100] = "sdsdf";
@@ -125,7 +116,7 @@ START_TEST(tc01_memset) {
 }
 END_TEST
 
-START_TEST(tc02_memset) {
+START_TEST(tc013_memset) {
   s21_size_t n = 12;
   char ch = 'r';
   char str[100] = "sdsdf";
@@ -133,7 +124,7 @@ START_TEST(tc02_memset) {
 }
 END_TEST
 
-START_TEST(tc03_memset) {
+START_TEST(tc014_memset) {
   s21_size_t n = 12;
   char ch = '\0';
   char str_1[100] = "sdsdf";
@@ -143,26 +134,24 @@ START_TEST(tc03_memset) {
 }
 END_TEST
 
-// Функция создания набора тестов для 'memchr'
 Suite *ts_s21_memchr() {
   Suite *suite = suite_create("ts_s21_memchr");
   TCase *test_case = tcase_create("tc_s21_memchr");
 
-  tcase_add_test(test_case, tc01_memchr);
-  tcase_add_test(test_case, tc02_memchr);
-  tcase_add_test(test_case, tc03_memchr);
+  tcase_add_test(test_case, tc001_memchr);
+  tcase_add_test(test_case, tc002_memchr);
+  tcase_add_test(test_case, tc003_memchr);
   suite_add_tcase(suite, test_case);
 
   return suite;
 }
 
-// Функция создания набора тестов для 'memcmp'
 Suite *ts_s21_memcmp() {
   Suite *suite = suite_create("ts_s21_memcmp");
   TCase *test_case = tcase_create("tc_s21_memcmp");
 
-  tcase_add_test(test_case, tc04_memcmp);
-  tcase_add_test(test_case, tc05_memcmp);
+  tcase_add_test(test_case, tc004_memcmp);
+  tcase_add_test(test_case, tc005_memcmp);
   suite_add_tcase(suite, test_case);
 
   return suite;
@@ -172,9 +161,9 @@ Suite *ts_s21_memcpy() {
   Suite *suite = suite_create("ts_s21_memcpy");
   TCase *test_case = tcase_create("tc_s21_memcpy");
 
-  tcase_add_test(test_case, tc06_memcpy);
-  tcase_add_test(test_case, tc07_memcpy);
-  tcase_add_test(test_case, tc08_memcpy);
+  tcase_add_test(test_case, tc006_memcpy);
+  tcase_add_test(test_case, tc007_memcpy);
+  tcase_add_test(test_case, tc008_memcpy);
   suite_add_tcase(suite, test_case);
 
   return suite;
@@ -184,9 +173,9 @@ Suite *ts_s21_memmove() {
   Suite *suite = suite_create("ts_s21_memmove");
   TCase *test_case = tcase_create("tc_s21_memmove");
 
-  tcase_add_test(test_case, tc09_memmove);
-  tcase_add_test(test_case, tc10_memmove);
-  tcase_add_test(test_case, tc11_memmove);
+  tcase_add_test(test_case, tc009_memmove);
+  tcase_add_test(test_case, tc010_memmove);
+  tcase_add_test(test_case, tc011_memmove);
   suite_add_tcase(suite, test_case);
 
   return suite;
@@ -196,9 +185,9 @@ Suite *ts_s21_memset() {
   Suite *suite = suite_create("ts_s21_memset");
   TCase *test_case = tcase_create("tc_s21_memset");
 
-  tcase_add_test(test_case, tc01_memset);
-  tcase_add_test(test_case, tc02_memset);
-  tcase_add_test(test_case, tc03_memset);
+  tcase_add_test(test_case, tc012_memset);
+  tcase_add_test(test_case, tc013_memset);
+  tcase_add_test(test_case, tc014_memset);
   suite_add_tcase(suite, test_case);
 
   return suite;
